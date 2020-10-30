@@ -10,8 +10,7 @@ import android.view.View;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.ualr.recyclerviewassignment.Utils.DataGenerator;
 import com.ualr.recyclerviewassignment.model.Inbox;
-
-
+import com.ualr.recyclerviewassignment.databinding.ActivityListMultiSelectionBinding;
 import java.util.List;
 
 
@@ -23,12 +22,15 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
 
+    private ActivityListMultiSelectionBinding binding;
+
     private FloatingActionButton mFAB;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_list_multi_selection);
+        binding = ActivityListMultiSelectionBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
         initComponent();
 
     }
@@ -40,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
         items.addAll(DataGenerator.getInboxData(this));
 
         // TODO 03. Do the setup of a new RecyclerView instance to display the item list properly
-      RecyclerView emailListView = findViewById(R.id.recyclerView);
+      RecyclerView emailListView = binding.recyclerView;
 
       LinearLayoutManager layoutManager = new LinearLayoutManager(this);
       emailListView.setLayoutManager(layoutManager);
