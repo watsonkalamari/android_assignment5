@@ -75,4 +75,8 @@ public class AdapterListClass extends RecyclerView.Adapter {
             date=itemView.findViewById(R.id.date);
         }
     }
+
+    public void addItem(int position, Inbox item){
+        mItems.add(position, item);
+    }
 }
