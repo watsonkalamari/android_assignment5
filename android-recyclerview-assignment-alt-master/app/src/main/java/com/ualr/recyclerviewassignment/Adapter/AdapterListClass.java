@@ -1,4 +1,4 @@
-package com.ualr.recyclerviewassignment;
+package com.ualr.recyclerviewassignment.Adapter;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,6 +9,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.ualr.recyclerviewassignment.R;
 import com.ualr.recyclerviewassignment.model.Inbox;
 
 import org.w3c.dom.Text;
@@ -52,7 +53,7 @@ public class AdapterListClass extends RecyclerView.Adapter {
 
     @Override
     public int getItemCount() {
-        return mItems.size();
+        return this.mItems.size();
     }
 
 
