@@ -11,9 +11,11 @@ import android.view.View;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.ualr.recyclerviewassignment.Adapter.AdapterListClass;
 import com.ualr.recyclerviewassignment.Utils.DataGenerator;
+import com.ualr.recyclerviewassignment.Utils.Tools;
 import com.ualr.recyclerviewassignment.model.Inbox;
 import com.ualr.recyclerviewassignment.databinding.ActivityListMultiSelectionBinding;
 import java.util.List;
+import java.util.Random;
 
 
 // TODO 06. Detect click events on the list items. Implement a new method to toggle items' selection in response to click events
@@ -25,7 +27,7 @@ public class MainActivity extends AppCompatActivity{
 
 
     private static final String TAG = MainActivity.class.getSimpleName();
-    private static final int DEFAULT_POS =2;
+    private static final int DEFAULT_POS =0;
 
     private ActivityListMultiSelectionBinding binding;
     private AdapterListClass adapter;
@@ -78,6 +80,9 @@ public class MainActivity extends AppCompatActivity{
             public void onClick(View view) {
                 // TODO 10. Invoke the method created to a new item to the top of the list so it's
                 //  triggered when the user taps the Floating Action Button
+
+                adapter.addItem(DEFAULT_POS,DataSource.get(Tools.getRandomNum(DataSource.size()-1)));
+                binding.recyclerView.scrollToPosition(DEFAULT_POS);
 
             }
         });

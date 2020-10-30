@@ -37,6 +37,14 @@ public class AdapterListClass extends RecyclerView.Adapter {
         this.mItems=items;
     }
 
+    public void removeItem(int position){
+        if(position >=mItems.size()){
+            return;
+        }
+        mItems.remove(position);
+        notifyItemRemoved(position);
+        notifyItemRangeChanged(position, getItemCount());
+    }
     public void setOnItemClickListener(final OnItemClickListener itemClickListener){
         this.mListener = itemClickListener;
     }
@@ -92,7 +100,7 @@ public class AdapterListClass extends RecyclerView.Adapter {
             lyt_parent.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    //mListener.onItemClick(v,mItems.get(getAbsoluteAdapterPosition()),getAbsoluteAdapterPosition());
+
                 }
             });
         }

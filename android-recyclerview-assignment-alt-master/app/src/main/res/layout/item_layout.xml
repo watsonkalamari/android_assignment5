@@ -18,9 +18,10 @@
 
         <TextView
             android:id="@+id/nameInitial"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@color/grey_10" />
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@color/grey_10"
+            android:drawableStart="@drawable/shape_circle" />
 
         <LinearLayout
             android:layout_width="wrap_content"
