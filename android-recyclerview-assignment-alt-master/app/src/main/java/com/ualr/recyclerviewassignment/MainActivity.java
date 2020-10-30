@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -20,11 +21,13 @@ import java.util.List;
 //  Implement a new method to delete the corresponding item in the list
 // TODO 08. Create a new method to add a new item on the top of the list. Use the DataGenerator class to create the new item to be added.
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity{
 
+
+    private static final String TAG = MainActivity.class.getSimpleName();
+    private static final int DEFAULT_POS =2;
 
     private ActivityListMultiSelectionBinding binding;
-
     private AdapterListClass adapter;
     private List<Inbox> DataSource;
     private FloatingActionButton mFAB;
@@ -35,18 +38,29 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityListMultiSelectionBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         initComponent();
-
     }
 
     private void initComponent() {
         // TODO 01. Generate the item list to be displayed using the DataGenerator class
-        DataSource = DataGenerator.getInboxData(this);
+       /* List<Inbox> items = DataGenerator.getInboxData(this);
+        items.addAll(DataGenerator.getInboxData(this));
+        items.addAll(DataGenerator.getInboxData(this));*/
+       DataSource=DataGenerator.getInboxData(this);
 
-        adapter= new AdapterListClass(DataSource);
-        binding.recyclerView.setAdapter(adapter);
+       adapter= new AdapterListClass(this,DataSource);
+       binding.recyclerView.setAdapter(adapter);
 
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         binding.recyclerView.setLayoutManager(layoutManager);
+
+       // adapter.setOnItemClickListener(this);
+        adapter.setOnItemClickListener(new AdapterListClass.OnItemClickListener() {
+            @Override
+            public void onItemClick(int position) {
+                //adapter.removeItem(position)
+            }
+        });
+
        /*items.addAll(DataGenerator.getInboxData(this));
         //items.addAll(DataGenerator.getInboxData(this));*/
 
@@ -68,5 +82,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
 
 }
