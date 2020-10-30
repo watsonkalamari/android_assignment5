@@ -25,6 +25,8 @@ public class MainActivity extends AppCompatActivity {
 
     private ActivityListMultiSelectionBinding binding;
 
+    private AdapterListClass adapter;
+    private List<Inbox> DataSource;
     private FloatingActionButton mFAB;
 
     @Override
@@ -38,20 +40,22 @@ public class MainActivity extends AppCompatActivity {
 
     private void initComponent() {
         // TODO 01. Generate the item list to be displayed using the DataGenerator class
-        List<Inbox> items = DataGenerator.getInboxData(this);
-        items.addAll(DataGenerator.getInboxData(this));
-        items.addAll(DataGenerator.getInboxData(this));
+        DataSource = DataGenerator.getInboxData(this);
+
+        adapter= new AdapterListClass(DataSource);
+        binding.recyclerView.setAdapter(adapter);
+
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
+        binding.recyclerView.setLayoutManager(layoutManager);
+       /*items.addAll(DataGenerator.getInboxData(this));
+        //items.addAll(DataGenerator.getInboxData(this));*/
+
 
         // TODO 03. Do the setup of a new RecyclerView instance to display the item list properly
-      RecyclerView emailListView = binding.recyclerView;
 
-      LinearLayoutManager layoutManager = new LinearLayoutManager(this);
-      emailListView.setLayoutManager(layoutManager);
 
         // TODO 04. Define the layout of each item in the list
         // TODO 09. Create a new instance of the created Adapter class and bind it to the RecyclerView instance created in step 03
-       AdapterListClass adapter = new AdapterListClass(items);
-       emailListView.setAdapter(adapter);
 
 
         mFAB = findViewById(R.id.fab);

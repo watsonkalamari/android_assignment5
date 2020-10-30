@@ -31,8 +31,9 @@ public class AdapterListClass extends RecyclerView.Adapter {
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        LayoutInflater lyInflater= LayoutInflater.from(parent.getContext());
-        View itemView = lyInflater.inflate(R.layout.item_layout,parent,false);
+        //LayoutInflater lyInflater= LayoutInflater.from(parent.getContext());
+        //View itemView = lyInflater.inflate(R.layout.item_layout,parent,false);
+        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_layout,parent,false);
         RecyclerView.ViewHolder vh = new InboxViewHolder(itemView);
 
         return vh;

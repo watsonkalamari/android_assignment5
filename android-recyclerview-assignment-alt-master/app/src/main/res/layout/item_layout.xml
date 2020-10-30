@@ -10,7 +10,10 @@
         android:layout_height="wrap_content"
         android:clickable="true"
         android:minHeight="?attr/actionBarSize"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
             android:id="@+id/image"
@@ -91,5 +94,8 @@
                 android:layout_height="wrap_content"
                 android:background="@color/grey_10" />
         </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
