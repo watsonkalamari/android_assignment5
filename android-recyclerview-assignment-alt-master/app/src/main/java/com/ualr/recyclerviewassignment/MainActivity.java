@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.ualr.recyclerviewassignment.Adapter.AdapterListClass;
@@ -33,6 +34,7 @@ public class MainActivity extends AppCompatActivity{
     private AdapterListClass adapter;
     private List<Inbox> DataSource;
     private FloatingActionButton mFAB;
+    private TextView thumbnail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,10 +61,10 @@ public class MainActivity extends AppCompatActivity{
         adapter.setOnItemClickListener(new AdapterListClass.OnItemClickListener() {
             @Override
             public void onItemClick(int position) {
-                //adapter.removeItem(position)
                 adapter.toggleItemState(position);
             }
         });
+
 
 
        /*items.addAll(DataGenerator.getInboxData(this));

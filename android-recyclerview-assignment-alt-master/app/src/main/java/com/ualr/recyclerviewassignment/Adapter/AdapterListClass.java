@@ -1,6 +1,7 @@
 package com.ualr.recyclerviewassignment.Adapter;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -76,10 +77,20 @@ public class AdapterListClass extends RecyclerView.Adapter {
         inboxViewHolder.name.setText(inbox.getFrom());
         inboxViewHolder.address.setText(inbox.getEmail());
         inboxViewHolder.date.setText(inbox.getDate());
+        inboxViewHolder.initial.setText(inbox.getInitial());
         if(inbox.isSelected()){
-            inboxViewHolder.lyt_parent.setBackgroundColor(context.getResources().getColor(R.color.overlay_light_20));
-        }
-        else{
+            inboxViewHolder.lyt_parent.setBackgroundColor(context.getResources().getColor(R.color.overlay_dark_20));
+            inboxViewHolder.initial.setText("X");
+            if(inboxViewHolder.initial.getText()=="X") {
+                inboxViewHolder.initial.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        removeItem(position);
+                        notifyItemRemoved(position);
+                    }
+                });
+            }
+        } else{
             inboxViewHolder.lyt_parent.setBackgroundColor(context.getResources().getColor(R.color.overlay_light_90));
         }
 
@@ -95,6 +106,7 @@ public class AdapterListClass extends RecyclerView.Adapter {
         public ImageView image;
         public TextView name;
         public TextView address;
+        public TextView initial;
         public TextView date;
         public View lyt_parent;
 
@@ -105,17 +117,16 @@ public class AdapterListClass extends RecyclerView.Adapter {
             address = itemView.findViewById(R.id.eAddress);
             lyt_parent = itemView.findViewById(R.id.lyt_parent);
             date = itemView.findViewById(R.id.date);
-           lyt_parent.setOnClickListener(this);
-        }
+            initial = itemView.findViewById(R.id.nameInitial);
 
-
-
-            //lyt_parent.setOnClickListener(new View.OnClickListener() {
-               @Override
+            lyt_parent.setOnClickListener(new View.OnClickListener() {
+                @Override
                 public void onClick(View v) {
+                  // mItems.get(getLayoutPosition()).setSelected(true);
+                   //notifyItemChanged(getLayoutPosition());
                     mOnItemClickListener.onItemClick(getLayoutPosition());
-                //}
-            //});
+                }
+            });
         }
     }
 

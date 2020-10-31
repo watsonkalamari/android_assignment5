@@ -19,6 +19,10 @@ public class Inbox {
         this.from = from;
     }
 
+    public String getInitial(){
+       return String.valueOf(from.charAt(0));
+    }
+
     public String getEmail() {
         return email;
     }
