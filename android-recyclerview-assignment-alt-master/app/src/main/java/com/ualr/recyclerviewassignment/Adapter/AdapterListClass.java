@@ -29,39 +29,41 @@ public class AdapterListClass extends RecyclerView.Adapter {
 
     private OnItemClickListener mOnItemClickListener;
 
-    public interface OnItemClickListener{
+    public interface OnItemClickListener {
         void onItemClick(int position);
     }
 
     private OnItemClickListener mListener;
 
-    public AdapterListClass(Context context, List<Inbox> items){
-        this.context=context;
-        this.mItems=items;
+    public AdapterListClass(Context context, List<Inbox> items) {
+        this.context = context;
+        this.mItems = items;
     }
 
-    public void removeItem(int position){
-        if(position >=mItems.size()){
+    public void removeItem(int position) {
+        if (position >= mItems.size()) {
             return;
         }
         mItems.remove(position);
         notifyItemRemoved(position);
         notifyItemRangeChanged(position, getItemCount());
     }
-    public void setOnItemClickListener(final OnItemClickListener itemClickListener){
+
+    public void setOnItemClickListener(final OnItemClickListener itemClickListener) {
         this.mOnItemClickListener = itemClickListener;
     }
 
-    public void toggleItemState(int position){
+    public void toggleItemState(int position) {
         this.mItems.get(position).toggleSelection();
         notifyItemChanged(position);
     }
+
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         //LayoutInflater lyInflater= LayoutInflater.from(parent.getContext());
         //View itemView = lyInflater.inflate(R.layout.item_layout,parent,false);
-        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_layout,parent,false);
+        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_layout, parent, false);
         RecyclerView.ViewHolder vh = new InboxViewHolder(itemView);
 
 
@@ -69,7 +71,7 @@ public class AdapterListClass extends RecyclerView.Adapter {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder,final int position) {
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, final int position) {
 
         InboxViewHolder inboxViewHolder = (InboxViewHolder) holder;
         Inbox inbox = mItems.get(position);
@@ -78,19 +80,18 @@ public class AdapterListClass extends RecyclerView.Adapter {
         inboxViewHolder.address.setText(inbox.getEmail());
         inboxViewHolder.date.setText(inbox.getDate());
         inboxViewHolder.initial.setText(inbox.getInitial());
-        if(inbox.isSelected()){
+        if (inbox.isSelected()) {
             inboxViewHolder.lyt_parent.setBackgroundColor(context.getResources().getColor(R.color.overlay_dark_20));
             inboxViewHolder.initial.setText("X");
-            if(inboxViewHolder.initial.getText()=="X") {
-                inboxViewHolder.initial.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        removeItem(position);
-                        notifyItemRemoved(position);
-                    }
-                });
-            }
-        } else{
+
+
+            inboxViewHolder.initial.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    removeItem(position);
+                }
+            });
+        } else {
             inboxViewHolder.lyt_parent.setBackgroundColor(context.getResources().getColor(R.color.overlay_light_90));
         }
 
@@ -122,15 +123,15 @@ public class AdapterListClass extends RecyclerView.Adapter {
             lyt_parent.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                  // mItems.get(getLayoutPosition()).setSelected(true);
-                   //notifyItemChanged(getLayoutPosition());
+                    // mItems.get(getLayoutPosition()).setSelected(true);
+                    //notifyItemChanged(getLayoutPosition());
                     mOnItemClickListener.onItemClick(getLayoutPosition());
                 }
             });
         }
     }
 
-    public void addItem(int position, Inbox item){
+    public void addItem(int position, Inbox item) {
         mItems.add(position, item);
         notifyItemInserted(position);
     }
