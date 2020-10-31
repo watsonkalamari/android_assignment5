@@ -53,10 +53,7 @@ public class AdapterListClass extends RecyclerView.Adapter {
         this.mOnItemClickListener = itemClickListener;
     }
 
-    public void toggleItemState(int position) {
-        this.mItems.get(position).toggleSelection();
-        notifyItemChanged(position);
-    }
+
 
     @NonNull
     @Override
@@ -83,18 +80,24 @@ public class AdapterListClass extends RecyclerView.Adapter {
         if (inbox.isSelected()) {
             inboxViewHolder.lyt_parent.setBackgroundColor(context.getResources().getColor(R.color.overlay_dark_20));
             inboxViewHolder.initial.setText("X");
-
-
+            
             inboxViewHolder.initial.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    toggleItemState(position);
                     removeItem(position);
+
+
                 }
             });
         } else {
             inboxViewHolder.lyt_parent.setBackgroundColor(context.getResources().getColor(R.color.overlay_light_90));
         }
 
+    }
+    public void toggleItemState(int position) {
+        this.mItems.get(position).toggleSelection();
+        notifyItemChanged(position);
     }
 
     @Override
@@ -134,6 +137,7 @@ public class AdapterListClass extends RecyclerView.Adapter {
     public void addItem(int position, Inbox item) {
         mItems.add(position, item);
         notifyItemInserted(position);
+        notifyItemRangeChanged(position, getItemCount());
     }
 
 }
