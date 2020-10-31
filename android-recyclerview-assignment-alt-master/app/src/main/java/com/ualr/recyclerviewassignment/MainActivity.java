@@ -60,8 +60,10 @@ public class MainActivity extends AppCompatActivity{
             @Override
             public void onItemClick(int position) {
                 //adapter.removeItem(position)
+                adapter.toggleItemState(position);
             }
         });
+
 
        /*items.addAll(DataGenerator.getInboxData(this));
         //items.addAll(DataGenerator.getInboxData(this));*/

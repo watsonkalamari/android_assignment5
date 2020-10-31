@@ -26,6 +26,8 @@ public class AdapterListClass extends RecyclerView.Adapter {
     private List<Inbox> mItems;
     private Context context;
 
+    private OnItemClickListener mOnItemClickListener;
+
     public interface OnItemClickListener{
         void onItemClick(int position);
     }
@@ -46,9 +48,13 @@ public class AdapterListClass extends RecyclerView.Adapter {
         notifyItemRangeChanged(position, getItemCount());
     }
     public void setOnItemClickListener(final OnItemClickListener itemClickListener){
-        this.mListener = itemClickListener;
+        this.mOnItemClickListener = itemClickListener;
     }
 
+    public void toggleItemState(int position){
+        this.mItems.get(position).toggleSelection();
+        notifyItemChanged(position);
+    }
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -57,11 +63,12 @@ public class AdapterListClass extends RecyclerView.Adapter {
         View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_layout,parent,false);
         RecyclerView.ViewHolder vh = new InboxViewHolder(itemView);
 
+
         return vh;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder,final int position) {
 
         InboxViewHolder inboxViewHolder = (InboxViewHolder) holder;
         Inbox inbox = mItems.get(position);
@@ -69,7 +76,12 @@ public class AdapterListClass extends RecyclerView.Adapter {
         inboxViewHolder.name.setText(inbox.getFrom());
         inboxViewHolder.address.setText(inbox.getEmail());
         inboxViewHolder.date.setText(inbox.getDate());
-        //
+        if(inbox.isSelected()){
+            inboxViewHolder.lyt_parent.setBackgroundColor(context.getResources().getColor(R.color.overlay_light_20));
+        }
+        else{
+            inboxViewHolder.lyt_parent.setBackgroundColor(context.getResources().getColor(R.color.overlay_light_90));
+        }
 
     }
 
@@ -77,7 +89,6 @@ public class AdapterListClass extends RecyclerView.Adapter {
     public int getItemCount() {
         return this.mItems.size();
     }
-
 
     public class InboxViewHolder extends RecyclerView.ViewHolder {
 
@@ -90,19 +101,21 @@ public class AdapterListClass extends RecyclerView.Adapter {
         public InboxViewHolder(@NonNull View itemView) {
             super(itemView);
             image = itemView.findViewById(R.id.image);
-            name =  itemView.findViewById(R.id.name);
-            lyt_parent=itemView.findViewById(R.id.lyt_parent);
-            address=itemView.findViewById(R.id.eAddress);
-            date=itemView.findViewById(R.id.date);
+            name = itemView.findViewById(R.id.name);
+            address = itemView.findViewById(R.id.eAddress);
+            lyt_parent = itemView.findViewById(R.id.lyt_parent);
+            date = itemView.findViewById(R.id.date);
+           lyt_parent.setOnClickListener(this);
+        }
 
 
 
-            lyt_parent.setOnClickListener(new View.OnClickListener() {
-                @Override
+            //lyt_parent.setOnClickListener(new View.OnClickListener() {
+               @Override
                 public void onClick(View v) {
-
-                }
-            });
+                    mOnItemClickListener.onItemClick(getLayoutPosition());
+                //}
+            //});
         }
     }
 
