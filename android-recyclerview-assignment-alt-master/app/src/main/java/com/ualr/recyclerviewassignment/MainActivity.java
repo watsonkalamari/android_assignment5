@@ -1,6 +1,7 @@
 package com.ualr.recyclerviewassignment;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -35,20 +36,23 @@ public class MainActivity extends AppCompatActivity{
     private List<Inbox> DataSource;
     private FloatingActionButton mFAB;
     private TextView thumbnail;
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityListMultiSelectionBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        initComponent();
+        toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        /*initComponent();*/
     }
 
-    private void initComponent() {
+  /*  private void initComponent() {
         // TODO 01. Generate the item list to be displayed using the DataGenerator class
-       /* List<Inbox> items = DataGenerator.getInboxData(this);
+        List<Inbox> items = DataGenerator.getInboxData(this);
         items.addAll(DataGenerator.getInboxData(this));
-        items.addAll(DataGenerator.getInboxData(this));*/
+        items.addAll(DataGenerator.getInboxData(this));
        DataSource=DataGenerator.getInboxData(this);
 
        adapter= new AdapterListClass(this,DataSource);
@@ -67,8 +71,8 @@ public class MainActivity extends AppCompatActivity{
 
 
 
-       /*items.addAll(DataGenerator.getInboxData(this));
-        //items.addAll(DataGenerator.getInboxData(this));*/
+       items.addAll(DataGenerator.getInboxData(this));
+        //items.addAll(DataGenerator.getInboxData(this));
 
 
         // TODO 03. Do the setup of a new RecyclerView instance to display the item list properly
@@ -90,7 +94,6 @@ public class MainActivity extends AppCompatActivity{
 
             }
         });
-    }
-
+    }*/
 
 }
