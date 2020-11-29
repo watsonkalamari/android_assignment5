@@ -42,6 +42,7 @@ public class InboxListFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         binding = InboxListFragmentBinding.inflate(getLayoutInflater());
 
+
         //TODO::Get the recyclerview to show up on the screen.
         List<Inbox> items = DataGenerator.getInboxData(getActivity());
        /* items.addAll(DataGenerator.getInboxData(getActivity()));*/
@@ -50,20 +51,22 @@ public class InboxListFragment extends Fragment {
 
 
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
+        binding.recyclerView.setLayoutManager(layoutManager);
         adapter = new AdapterListClass(getActivity(), DataSource);
 
 
-        binding.recyclerView.setLayoutManager(layoutManager);
+
         binding.recyclerView.setAdapter(adapter);
-        // adapter.setOnItemClickListener(this);
-      /*  adapter.setOnItemClickListener(new AdapterListClass.OnItemClickListener() {
+
+
+        /* adapter.setOnItemClickListener(this);
+        adapter.setOnItemClickListener(new AdapterListClass.OnItemClickListener() {
             @Override
             public void onItemClick(int position) {
                 adapter.toggleItemState(position);*/
 
-        /*items.addAll(DataGenerator.getInboxData(getActivity()));*/
-        //items.addAll(DataGenerator.getInboxData(this));
-
+        items.addAll(DataGenerator.getInboxData(getActivity()));
+        items.addAll(DataGenerator.getInboxData(getActivity()));
 
     }
 }
