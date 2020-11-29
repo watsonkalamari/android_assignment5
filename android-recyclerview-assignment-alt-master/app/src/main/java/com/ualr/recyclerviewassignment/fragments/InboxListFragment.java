@@ -34,7 +34,7 @@ public class InboxListFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.inbox_list_fragment, container, true);
+        return inflater.inflate(R.layout.inbox_list_fragment, container, false);
 
     }
 
@@ -44,7 +44,6 @@ public class InboxListFragment extends Fragment {
 
         //TODO::Get the recyclerview to show up on the screen.
         List<Inbox> items = DataGenerator.getInboxData(getActivity());
-
        /* items.addAll(DataGenerator.getInboxData(getActivity()));*/
         items.addAll(DataGenerator.getInboxData(getActivity()));
         DataSource = DataGenerator.getInboxData(getActivity());

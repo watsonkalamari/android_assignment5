@@ -47,15 +47,14 @@ public class MainActivity extends AppCompatActivity{
         setContentView(binding.getRoot());
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-
+        
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        ft.replace(R.id.fragment_placeholder, new InboxListFragment());
+        ft.add(R.id.fragment_placeholder, new InboxListFragment());
         ft.commit();
         /*initComponent();*/
     }
 
-    @Override
+   /* @Override
     public boolean onCreateOptionsMenu(Menu menu){
         getMenuInflater().inflate(R.menu.toolbar_menu,menu);
         return true;
@@ -70,7 +69,7 @@ public class MainActivity extends AppCompatActivity{
                 return true;
             default: return super.onOptionsItemSelected(item);
         }
-    }
+    }*/
 
     private void initComponent() {
         mFAB = findViewById(R.id.fab);
