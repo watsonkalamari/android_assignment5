@@ -37,26 +37,21 @@ public class InboxListFragment extends Fragment {
         return inflater.inflate(R.layout.inbox_list_fragment, container, false);
 
     }
-
+    //TODO::Get the recyclerview to show up on the screen.
     @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        binding = InboxListFragmentBinding.inflate(getLayoutInflater());
-
-
-        //TODO::Get the recyclerview to show up on the screen.
-        List<Inbox> items = DataGenerator.getInboxData(getActivity());
-       /* items.addAll(DataGenerator.getInboxData(getActivity()));*/
-        items.addAll(DataGenerator.getInboxData(getActivity()));
-        DataSource = DataGenerator.getInboxData(getActivity());
-
-
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState)
+    {
+       /* binding = InboxListFragmentBinding.inflate(getLayoutInflater());*/
+        RecyclerView recyclerView=view.findViewById(R.id.recyclerView);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
-        binding.recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setLayoutManager(layoutManager);
+        List<Inbox> items = DataGenerator.getInboxData(getActivity());
+        DataSource = DataGenerator.getInboxData(getActivity());
         adapter = new AdapterListClass(getActivity(), DataSource);
+        recyclerView.setAdapter(adapter);
 
-
-
-        binding.recyclerView.setAdapter(adapter);
+        /* items.addAll(DataGenerator.getInboxData(getActivity()));*/
+        /*items.addAll(DataGenerator.getInboxData(getActivity()));*/
 
 
         /* adapter.setOnItemClickListener(this);
@@ -65,8 +60,8 @@ public class InboxListFragment extends Fragment {
             public void onItemClick(int position) {
                 adapter.toggleItemState(position);*/
 
-        items.addAll(DataGenerator.getInboxData(getActivity()));
-        items.addAll(DataGenerator.getInboxData(getActivity()));
+       /* items.addAll(DataGenerator.getInboxData(getActivity()));
+        items.addAll(DataGenerator.getInboxData(getActivity()));*/
 
     }
 }
