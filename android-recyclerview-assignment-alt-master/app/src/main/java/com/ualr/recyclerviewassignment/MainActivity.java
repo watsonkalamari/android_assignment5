@@ -27,11 +27,6 @@ import java.util.List;
 import java.util.Random;
 
 
-// TODO 06. Detect click events on the list items. Implement a new method to toggle items' selection in response to click events
-// TODO 07. Detect click events on the thumbnail located on the left of every list row when the corresponding item is selected.
-//  Implement a new method to delete the corresponding item in the list
-// TODO 08. Create a new method to add a new item on the top of the list. Use the DataGenerator class to create the new item to be added.
-
 public class MainActivity extends AppCompatActivity{
 
 
@@ -54,9 +49,8 @@ public class MainActivity extends AppCompatActivity{
         setSupportActionBar(toolbar);
 
 
-
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-       ft.replace(R.id.fragment_placeholder, new InboxListFragment());
+        ft.replace(R.id.fragment_placeholder, new InboxListFragment());
         ft.commit();
         /*initComponent();*/
     }
@@ -83,8 +77,6 @@ public class MainActivity extends AppCompatActivity{
         mFAB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // TODO 10. Invoke the method created to a new item to the top of the list so it's
-                //  triggered when the user taps the Floating Action Button
 
                /* adapter.addItem(DEFAULT_POS, DataSource.get(Tools.getRandomNum(DataSource.size() - 1)));
                 binding.recyclerView.scrollToPosition(DEFAULT_POS);*/

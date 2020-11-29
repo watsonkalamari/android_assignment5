@@ -28,7 +28,6 @@ public class InboxListFragment extends Fragment {
     private InboxListFragmentBinding binding;
     private AdapterListClass adapter;
     private List<Inbox> DataSource;
-    private Context mContext;
 
 
     @Nullable
@@ -41,8 +40,11 @@ public class InboxListFragment extends Fragment {
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        /*binding = InboxListFragmentBinding.inflate(getLayoutInflater());*/
+        binding = InboxListFragmentBinding.inflate(getLayoutInflater());
+
+        //TODO::Get the recyclerview to show up on the screen.
         List<Inbox> items = DataGenerator.getInboxData(getActivity());
+
        /* items.addAll(DataGenerator.getInboxData(getActivity()));*/
         items.addAll(DataGenerator.getInboxData(getActivity()));
         DataSource = DataGenerator.getInboxData(getActivity());

@@ -16,8 +16,6 @@ import com.ualr.recyclerviewassignment.model.Inbox;
 import java.util.List;
 
 
-// TODO 05. Create a new Adapter class and the corresponding ViewHolder class in a different file. The adapter will be used to populate
-//  the recyclerView and manage the interaction with the items in the list
 public class AdapterListClass extends RecyclerView.Adapter {
 
     private List<Inbox> mItems;

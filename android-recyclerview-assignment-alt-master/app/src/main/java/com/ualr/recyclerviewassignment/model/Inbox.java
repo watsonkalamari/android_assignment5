@@ -3,7 +3,7 @@ package com.ualr.recyclerviewassignment.model;
 import androidx.lifecycle.ViewModel;
 
 ;
-
+//TODO::Modify the inbox class so inbox object can be sent attached to an intent.
 public class Inbox {
     private String from;
     private String email;
