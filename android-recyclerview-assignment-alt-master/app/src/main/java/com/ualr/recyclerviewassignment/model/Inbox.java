@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel;
 
 ;
 
-public class Inbox extends ViewModel {
+public class Inbox {
     private String from;
     private String email;
     private String message;

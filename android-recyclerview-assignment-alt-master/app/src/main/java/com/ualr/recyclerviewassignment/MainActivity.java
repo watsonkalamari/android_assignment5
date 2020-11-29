@@ -1,19 +1,26 @@
 package com.ualr.recyclerviewassignment;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
 import com.ualr.recyclerviewassignment.Adapter.AdapterListClass;
 import com.ualr.recyclerviewassignment.Utils.DataGenerator;
 import com.ualr.recyclerviewassignment.Utils.Tools;
+import com.ualr.recyclerviewassignment.fragments.InboxListFragment;
 import com.ualr.recyclerviewassignment.model.Inbox;
 import com.ualr.recyclerviewassignment.databinding.ActivityListMultiSelectionBinding;
 import java.util.List;
@@ -45,7 +52,30 @@ public class MainActivity extends AppCompatActivity{
         setContentView(binding.getRoot());
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+
+
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+       ft.replace(R.id.fragment_placeholder, new InboxListFragment());
+        ft.commit();
         /*initComponent();*/
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        getMenuInflater().inflate(R.menu.toolbar_menu,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item){
+        switch (item.getItemId()){
+            case R.id.delete_action:
+                return true;
+            case R.id.forward_action:
+                return true;
+            default: return super.onOptionsItemSelected(item);
+        }
     }
 
     private void initComponent() {
@@ -63,4 +93,17 @@ public class MainActivity extends AppCompatActivity{
             }
         })
     ;}
+
+    /*CoordinatorLayout parentView = findViewById(R.id.lyt_parent);
+    String msg = getResources().getString(R.string.snackbar_message);
+    int duration = Snackbar.LENGTH_LONG;
+    Snackbar snackbar = Snackbar.make(parentView, msg, duration);
+
+    public class MyClickListener implements View.OnClickListener{
+        @Override
+        public void onClick (View v){
+
+        }
+    }
+*/
 }
