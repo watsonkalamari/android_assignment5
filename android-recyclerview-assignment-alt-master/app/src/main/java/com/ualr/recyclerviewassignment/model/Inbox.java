@@ -1,6 +1,10 @@
-package com.ualr.recyclerviewassignment.model;;
+package com.ualr.recyclerviewassignment.model;
 
-public class Inbox {
+import androidx.lifecycle.ViewModel;
+
+;
+
+public class Inbox extends ViewModel {
     private String from;
     private String email;
     private String message;

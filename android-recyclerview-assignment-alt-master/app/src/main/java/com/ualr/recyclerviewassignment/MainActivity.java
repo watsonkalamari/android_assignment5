@@ -48,40 +48,7 @@ public class MainActivity extends AppCompatActivity{
         /*initComponent();*/
     }
 
-  /*  private void initComponent() {
-        // TODO 01. Generate the item list to be displayed using the DataGenerator class
-        List<Inbox> items = DataGenerator.getInboxData(this);
-        items.addAll(DataGenerator.getInboxData(this));
-        items.addAll(DataGenerator.getInboxData(this));
-       DataSource=DataGenerator.getInboxData(this);
-
-       adapter= new AdapterListClass(this,DataSource);
-       binding.recyclerView.setAdapter(adapter);
-
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
-        binding.recyclerView.setLayoutManager(layoutManager);
-
-       // adapter.setOnItemClickListener(this);
-        adapter.setOnItemClickListener(new AdapterListClass.OnItemClickListener() {
-            @Override
-            public void onItemClick(int position) {
-                adapter.toggleItemState(position);
-            }
-        });
-
-
-
-       items.addAll(DataGenerator.getInboxData(this));
-        //items.addAll(DataGenerator.getInboxData(this));
-
-
-        // TODO 03. Do the setup of a new RecyclerView instance to display the item list properly
-
-
-        // TODO 04. Define the layout of each item in the list
-        // TODO 09. Create a new instance of the created Adapter class and bind it to the RecyclerView instance created in step 03
-
-
+    private void initComponent() {
         mFAB = findViewById(R.id.fab);
         mFAB.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -89,11 +56,11 @@ public class MainActivity extends AppCompatActivity{
                 // TODO 10. Invoke the method created to a new item to the top of the list so it's
                 //  triggered when the user taps the Floating Action Button
 
-                adapter.addItem(DEFAULT_POS,DataSource.get(Tools.getRandomNum(DataSource.size()-1)));
-                binding.recyclerView.scrollToPosition(DEFAULT_POS);
+               /* adapter.addItem(DEFAULT_POS, DataSource.get(Tools.getRandomNum(DataSource.size() - 1)));
+                binding.recyclerView.scrollToPosition(DEFAULT_POS);*/
+
 
             }
-        });
-    }*/
-
+        })
+    ;}
 }
