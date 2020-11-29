@@ -14,6 +14,7 @@ public class InboxViewModel extends ViewModel {
         selected.setValue(inbox);
     }
     public LiveData<Inbox>getSelected(){
-        return selected;
+        return selected.;
     }
+
 }

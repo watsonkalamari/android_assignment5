@@ -8,10 +8,12 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.ualr.recyclerviewassignment.Adapter.AdapterListClass;
+import com.ualr.recyclerviewassignment.InboxViewModel;
 import com.ualr.recyclerviewassignment.R;
 import com.ualr.recyclerviewassignment.Utils.DataGenerator;
 import com.ualr.recyclerviewassignment.model.Inbox;
@@ -46,6 +48,7 @@ public class InboxListFragment extends Fragment {
         DataSource = DataGenerator.getInboxData(getActivity());
         adapter = new AdapterListClass(getActivity(), DataSource);
         recyclerView.setAdapter(adapter);
+
 
         adapter.setOnItemClickListener(new AdapterListClass.OnItemClickListener() {
             @Override

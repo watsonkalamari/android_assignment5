@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -39,6 +40,7 @@ public class MainActivity extends AppCompatActivity{
     private FloatingActionButton mFAB;
     private TextView thumbnail;
     private Toolbar toolbar;
+    private InboxViewModel viewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +52,8 @@ public class MainActivity extends AppCompatActivity{
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.add(R.id.fragment_placeholder, new InboxListFragment());
         ft.commit();
+
+        viewModel = new ViewModelProvider(this).get(InboxViewModel.class);
         /*initComponent();*/
     }
 
@@ -63,6 +67,7 @@ public class MainActivity extends AppCompatActivity{
     public boolean onOptionsItemSelected(@NonNull MenuItem item){
         switch (item.getItemId()){
             case R.id.delete_action:
+
                 return true;
             case R.id.forward_action:
                 return true;
