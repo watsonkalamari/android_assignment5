@@ -20,6 +20,12 @@ public class ForwardDialogFragment extends DialogFragment {
     //TODO::create the layout for then Forward dialog
     private Inbox inbox;
 
+ /*   public void onCreate(Bundle savedInstanceState){
+        super.onCreate((savedInstanceState));
+        InboxViewModel model = ViewModelProvider(getActivity()).get(InboxViewModel.class);
+        model.getSelected().observe(this,{item->);
+    }*/
+
     @NonNull
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
@@ -28,7 +34,7 @@ public class ForwardDialogFragment extends DialogFragment {
 
         builder.setView(inflater.inflate(R.layout.forward_dialog_fragment, null));
 
-        InboxViewModel model = ViewModelProvider(getActivity()).get(InboxViewModel.class);
+
         builder.setPositiveButton(R.string.send_btn, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {

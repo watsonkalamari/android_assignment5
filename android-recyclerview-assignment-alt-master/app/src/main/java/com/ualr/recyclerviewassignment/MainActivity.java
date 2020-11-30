@@ -69,7 +69,6 @@ public class MainActivity extends AppCompatActivity{
     public boolean onOptionsItemSelected(@NonNull MenuItem item){
         switch (item.getItemId()){
             case R.id.delete_action:
-
                 return true;
             case R.id.forward_action:
                 ForwardDialogFragment dialog = new ForwardDialogFragment();
@@ -85,7 +84,7 @@ public class MainActivity extends AppCompatActivity{
             @Override
             public void onClick(View view) {
 
-                viewModel.setInboxList(new Inbox());
+               /* viewModel.setInboxList(new Inbox());*/
                /*
                adapter.addItem(DEFAULT_POS, DataSource.get(Tools.getRandomNum(DataSource.size() - 1)));
                 binding.recyclerView.scrollToPosition(DEFAULT_POS);*/
