@@ -85,6 +85,7 @@ public class MainActivity extends AppCompatActivity{
             @Override
             public void onClick(View view) {
 
+                viewModel.setInboxList(new Inbox());
                /*
                adapter.addItem(DEFAULT_POS, DataSource.get(Tools.getRandomNum(DataSource.size() - 1)));
                 binding.recyclerView.scrollToPosition(DEFAULT_POS);*/
@@ -93,11 +94,15 @@ public class MainActivity extends AppCompatActivity{
             }
         })
     ;}
-/*
-    CoordinatorLayout parentView = findViewById(R.id.lyt_parent);
-    String msg = getResources().getString(R.string.snackbar_message);
-    int duration = Snackbar.LENGTH_LONG;
-    Snackbar snackbar = Snackbar.make(parentView, msg, duration);*/
+
+    public void showSnackbar(View view){
+        CoordinatorLayout parentView = findViewById(R.id.lyt_parent);
+        String msg = getResources().getString(R.string.snackbar_message);
+        int duration = Snackbar.LENGTH_LONG;
+        Snackbar snackbar = Snackbar.make(parentView, msg, duration);
+        snackbar.show();
+    }
+
 
     /*public class MyClickListener implements View.OnClickListener{
         @Override

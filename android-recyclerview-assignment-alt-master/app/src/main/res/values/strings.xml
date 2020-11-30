@@ -7,4 +7,5 @@
     <string name="delete_action">Delete</string>
     <string name="forward_action">Forward</string>
     <string name="snackbar_message">Email deleted</string>
+    <string name="send_btn">Send</string>
 </resources>

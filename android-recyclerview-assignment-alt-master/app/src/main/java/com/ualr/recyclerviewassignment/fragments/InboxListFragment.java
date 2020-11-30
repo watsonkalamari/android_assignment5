@@ -27,6 +27,7 @@ public class InboxListFragment extends Fragment {
     private InboxListFragmentBinding binding;
     private AdapterListClass adapter;
     private List<Inbox> DataSource;
+    private InboxViewModel viewModel;
 
 
     @Nullable
@@ -48,6 +49,8 @@ public class InboxListFragment extends Fragment {
         DataSource = DataGenerator.getInboxData(getActivity());
         adapter = new AdapterListClass(getActivity(), DataSource);
         recyclerView.setAdapter(adapter);
+
+        viewModel = new ViewModelProvider(getActivity()).get(InboxViewModel.class);
 
 
         adapter.setOnItemClickListener(new AdapterListClass.OnItemClickListener() {

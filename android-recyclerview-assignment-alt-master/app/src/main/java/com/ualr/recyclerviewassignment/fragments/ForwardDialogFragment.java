@@ -10,7 +10,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.DialogFragment;
+import androidx.lifecycle.ViewModelProvider;
 
+import com.ualr.recyclerviewassignment.InboxViewModel;
 import com.ualr.recyclerviewassignment.R;
 import com.ualr.recyclerviewassignment.model.Inbox;
 
@@ -26,7 +28,8 @@ public class ForwardDialogFragment extends DialogFragment {
 
         builder.setView(inflater.inflate(R.layout.forward_dialog_fragment, null));
 
-        builder.setPositiveButton(R.string.forward_action, new DialogInterface.OnClickListener() {
+        InboxViewModel model = ViewModelProvider(getActivity()).get(InboxViewModel.class);
+        builder.setPositiveButton(R.string.send_btn, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
 
