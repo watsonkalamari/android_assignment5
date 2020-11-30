@@ -73,7 +73,7 @@ public class AdapterListClass extends RecyclerView.Adapter {
         inboxViewHolder.initial.setText(inbox.getInitial());
         if (inbox.isSelected()) {
             inboxViewHolder.lyt_parent.setBackgroundColor(context.getResources().getColor(R.color.overlay_dark_20));
-            inboxViewHolder.initial.setText("X");
+            /*inboxViewHolder.initial.setText("X");*/
             
             inboxViewHolder.initial.setOnClickListener(new View.OnClickListener() {
                 @Override

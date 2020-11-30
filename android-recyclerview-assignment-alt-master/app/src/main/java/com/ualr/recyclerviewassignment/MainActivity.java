@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity{
         ft.commit();
 
         viewModel = new ViewModelProvider(this).get(InboxViewModel.class);
-        /*initComponent();*/
+        initComponent();
     }
 
     @Override
@@ -85,7 +85,9 @@ public class MainActivity extends AppCompatActivity{
             @Override
             public void onClick(View view) {
 
-               /* adapter.addItem(DEFAULT_POS, DataSource.get(Tools.getRandomNum(DataSource.size() - 1)));
+                viewModel.
+               /*
+               adapter.addItem(DEFAULT_POS, DataSource.get(Tools.getRandomNum(DataSource.size() - 1)));
                 binding.recyclerView.scrollToPosition(DEFAULT_POS);*/
 
 

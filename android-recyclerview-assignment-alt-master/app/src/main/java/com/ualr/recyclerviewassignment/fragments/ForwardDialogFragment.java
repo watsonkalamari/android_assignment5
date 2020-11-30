@@ -12,24 +12,27 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.DialogFragment;
 
 import com.ualr.recyclerviewassignment.R;
+import com.ualr.recyclerviewassignment.model.Inbox;
 
 public class ForwardDialogFragment extends DialogFragment {
     //TODO::create the layout for then Forward dialog
+    private Inbox inbox;
 
     @NonNull
     @Override
-    public Dialog onCreateDialog(@Nullable Bundle savedInstanceState){
+    public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-       LayoutInflater inflater = requireActivity().getLayoutInflater();
+        LayoutInflater inflater = requireActivity().getLayoutInflater();
 
-       builder.setView(inflater.inflate(R.layout.forward_dialog_fragment,null));
-       builder.setPositiveButton(R.string.forward_action, new DialogInterface.OnClickListener() {
-           @Override
-           public void onClick(DialogInterface dialog, int which) {
+        builder.setView(inflater.inflate(R.layout.forward_dialog_fragment, null));
 
-           }
-       });
-       return builder.create();
+        builder.setPositiveButton(R.string.forward_action, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+        return builder.create();
     }
 
    /* @Override
@@ -37,9 +40,6 @@ public class ForwardDialogFragment extends DialogFragment {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
         LayoutInflater inflater = requireActivity().getLayoutInflater();
-
-
-
     }*/
 
 }
