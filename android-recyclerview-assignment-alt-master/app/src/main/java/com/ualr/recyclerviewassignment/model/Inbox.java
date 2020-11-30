@@ -1,10 +1,13 @@
 package com.ualr.recyclerviewassignment.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import androidx.lifecycle.ViewModel;
 
 ;
 //TODO::Modify the inbox class so inbox object can be sent attached to an intent.
-public class Inbox {
+public class Inbox implements Parcelable {
     private String from;
     private String email;
     private String message;
@@ -61,5 +64,34 @@ public class Inbox {
 
     public void toggleSelection() {
         this.selected = !this.selected;
+    }
+
+    public static final Parcelable.Creator<Inbox> CREATOR = new Parcelable.Creator<Inbox>() {
+        @Override
+        public Inbox createFromParcel(Parcel source) {
+            return new Inbox(source);
+        }
+
+        @Override
+        public Inbox[] newArray(int size) {
+            return new Inbox[size];
+        }
+    };
+
+    @Override
+    public int describeContents(){
+        return 0;
+    }
+    public void writeToParcel(Parcel parcel, int i){
+        parcel.writeString(from);
+        parcel.writeString(email);
+        parcel.writeString(message);
+        parcel.writeString(date);
+    }
+    protected Inbox(Parcel in){
+        this.from = in.readString();
+        this.email=in.readString();
+        this.message=in.readString();
+        this.date=in.readString();
     }
 }

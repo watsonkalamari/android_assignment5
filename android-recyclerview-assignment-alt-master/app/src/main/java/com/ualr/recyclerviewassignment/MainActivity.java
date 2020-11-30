@@ -21,6 +21,7 @@ import com.google.android.material.snackbar.Snackbar;
 import com.ualr.recyclerviewassignment.Adapter.AdapterListClass;
 import com.ualr.recyclerviewassignment.Utils.DataGenerator;
 import com.ualr.recyclerviewassignment.Utils.Tools;
+import com.ualr.recyclerviewassignment.fragments.ForwardDialogFragment;
 import com.ualr.recyclerviewassignment.fragments.InboxListFragment;
 import com.ualr.recyclerviewassignment.model.Inbox;
 import com.ualr.recyclerviewassignment.databinding.ActivityListMultiSelectionBinding;
@@ -31,6 +32,7 @@ import java.util.Random;
 public class MainActivity extends AppCompatActivity{
 
 
+    private static final String DIALOG_FRAGMENT_TAG ="DialogFragment";
     private static final String TAG = MainActivity.class.getSimpleName();
     private static final int DEFAULT_POS =0;
 
@@ -70,6 +72,8 @@ public class MainActivity extends AppCompatActivity{
 
                 return true;
             case R.id.forward_action:
+                ForwardDialogFragment dialog = new ForwardDialogFragment();
+                dialog.show(getSupportFragmentManager(),DIALOG_FRAGMENT_TAG);
                 return true;
             default: return super.onOptionsItemSelected(item);
         }
