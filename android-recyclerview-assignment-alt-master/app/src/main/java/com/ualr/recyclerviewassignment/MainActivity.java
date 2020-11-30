@@ -85,7 +85,6 @@ public class MainActivity extends AppCompatActivity{
             @Override
             public void onClick(View view) {
 
-                viewModel.
                /*
                adapter.addItem(DEFAULT_POS, DataSource.get(Tools.getRandomNum(DataSource.size() - 1)));
                 binding.recyclerView.scrollToPosition(DEFAULT_POS);*/

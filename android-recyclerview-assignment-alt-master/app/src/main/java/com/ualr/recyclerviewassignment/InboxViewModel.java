@@ -14,7 +14,9 @@ public class InboxViewModel extends ViewModel {
     private final MutableLiveData<Inbox>inbox = new MutableLiveData<Inbox>();
 
     public void select(Inbox inbox){
-        inbox.(inbox);
+        inbox.getFrom
+
+
     }
     public LiveData<Inbox>getSelected(){
         return inbox;
