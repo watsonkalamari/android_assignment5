@@ -88,17 +88,16 @@ public class MainActivity extends AppCompatActivity{
             }
         })
     ;}
-
-    /*CoordinatorLayout parentView = findViewById(R.id.lyt_parent);
+/*
+    CoordinatorLayout parentView = findViewById(R.id.lyt_parent);
     String msg = getResources().getString(R.string.snackbar_message);
     int duration = Snackbar.LENGTH_LONG;
-    Snackbar snackbar = Snackbar.make(parentView, msg, duration);
+    Snackbar snackbar = Snackbar.make(parentView, msg, duration);*/
 
-    public class MyClickListener implements View.OnClickListener{
+    /*public class MyClickListener implements View.OnClickListener{
         @Override
         public void onClick (View v){
 
         }
-    }
-*/
+    }*/
 }

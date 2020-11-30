@@ -4,22 +4,29 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/lyt_parent"
     android:layout_width="match_parent"
-    android:selectable="true"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:selectable="true">
 
-   <androidx.appcompat.widget.Toolbar
-       android:id="@+id/toolbar"
-       android:layout_width="match_parent"
-       android:layout_height="?attr/actionBarSize"
-       android:background="?attr/colorPrimary"
-       android:elevation="4dp"
-       android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
-       app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
-
-    <FrameLayout
-        android:id="@+id/fragment_placeholder"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            android:elevation="4dp"
+            android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+            app:layout_constraintTop_toTopOf="parent"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+
+        <FrameLayout
+            android:id="@+id/fragment_placeholder"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"
@@ -32,7 +39,6 @@
         app:fabSize="normal"
         app:rippleColor="@color/blue_900"
         app:srcCompat="@drawable/ic_add_circle_outline_24px" />
-
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
