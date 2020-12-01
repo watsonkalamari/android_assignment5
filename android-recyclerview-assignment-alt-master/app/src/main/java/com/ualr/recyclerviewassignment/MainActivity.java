@@ -43,6 +43,7 @@ public class MainActivity extends AppCompatActivity{
     private TextView thumbnail;
     private Toolbar toolbar;
     private InboxViewModel viewModel;
+    private InboxListFragment inboxListFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,7 +57,15 @@ public class MainActivity extends AppCompatActivity{
         ft.commit();
 
         viewModel = new ViewModelProvider(this).get(InboxViewModel.class);
-        initComponent();
+        mFAB = findViewById(R.id.fab);
+        mFAB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                inboxListFragment.addItem();
+            }
+        });
+       /* initComponent();*/
     }
 
     @Override
@@ -80,20 +89,7 @@ public class MainActivity extends AppCompatActivity{
     }
 
     private void initComponent() {
-        mFAB = findViewById(R.id.fab);
-        mFAB.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-               DataSource = viewModel.getInboxList().getValue();
-               DataSource.add(new Inbox());
-               viewModel.setInboxList(DataSource);
-               /*
-               adapter.addItem(DEFAULT_POS, DataSource.get(Tools.getRandomNum(DataSource.size() - 1)));
-                binding.recyclerView.scrollToPosition(DEFAULT_POS);*/
 
-
-            }
-        })
     ;}
 
     public void showSnackbar(){

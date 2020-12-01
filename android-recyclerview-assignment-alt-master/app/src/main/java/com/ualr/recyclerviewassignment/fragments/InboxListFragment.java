@@ -79,5 +79,13 @@ public class InboxListFragment extends Fragment {
         });
 
     }
+    public void addItem() {
+
+       Inbox newEmail = DataGenerator.getRandomInboxItem(getActivity());
+       List<Inbox> emails=viewModel.getInboxList().getValue();
+       emails.add(0,newEmail);
+       viewModel.setInboxList(emails);
+
+    }
 }
 

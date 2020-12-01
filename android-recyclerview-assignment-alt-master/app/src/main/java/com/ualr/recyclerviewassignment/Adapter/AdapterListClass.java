@@ -140,10 +140,4 @@ public class AdapterListClass extends RecyclerView.Adapter {
         }
     }
 
-    public void addItem(int position, Inbox item) {
-        mItems.add(position, item);
-        notifyItemInserted(position);
-        notifyItemRangeChanged(position, getItemCount());
-    }
-
 }
