@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.ualr.recyclerviewassignment.R;
+import com.ualr.recyclerviewassignment.fragments.InboxListFragment;
 import com.ualr.recyclerviewassignment.model.Inbox;
 
 import java.util.List;
@@ -20,6 +21,7 @@ public class AdapterListClass extends RecyclerView.Adapter {
 
     private List<Inbox> mItems;
     private Context context;
+    private InboxListFragment inboxListFragment;
 
     private OnItemClickListener mOnItemClickListener;
 
@@ -39,13 +41,7 @@ public class AdapterListClass extends RecyclerView.Adapter {
     // by an observer, the list in the AdaptarListClass is automatically updated
 
     /*
-    public void removeItem(int position) {
-        if (position >= mItems.size()) {
-            return;
-        }
-        mItems.remove(position);
-        notifyItemRemoved(position);
-        notifyItemRangeChanged(position, getItemCount());
+
     }*/
 
     // TODO irconde 05. We need to define a method to update the list within the AdapterListCLass from the InboxListFragment
@@ -75,7 +71,7 @@ public class AdapterListClass extends RecyclerView.Adapter {
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, final int position) {
 
-        InboxViewHolder inboxViewHolder = (InboxViewHolder) holder;
+        final InboxViewHolder inboxViewHolder = (InboxViewHolder) holder;
         Inbox inbox = mItems.get(position);
 
         inboxViewHolder.name.setText(inbox.getFrom());
@@ -90,6 +86,7 @@ public class AdapterListClass extends RecyclerView.Adapter {
                 @Override
                 public void onClick(View v) {
                     // TODO. You need to ask the InboxListFragment to do so
+
                     /*
                     toggleItemState(position);
                     removeItem(position);

@@ -48,7 +48,6 @@ public class InboxListFragment extends Fragment {
         // TODO irconde 02. We get a reference of the ViewModel
         viewModel = new ViewModelProvider(getActivity()).get(InboxViewModel.class);
         adapter = new AdapterListClass(getActivity(), DataSource);
-
         // TODO irconde 03. We start monitoring the list in the viewModel, so whenever there's a
         //  change in that list, the list in the adapter is automatically updated. In that way we keep both lists synchronized
         viewModel.getInboxList().observe(this, new Observer<List<Inbox>>() {
@@ -79,13 +78,32 @@ public class InboxListFragment extends Fragment {
         });
 
     }
-    public void addItem() {
+    // TODO irconde 09. We add the new item to the list in the viewmodel. Since the list is being observed
+    // by the observer we defined with "TODO irconde 03", the list in the adapter is automatically updated
 
-       Inbox newEmail = DataGenerator.getRandomInboxItem(getActivity());
-       List<Inbox> emails=viewModel.getInboxList().getValue();
-       emails.add(0,newEmail);
-       viewModel.setInboxList(emails);
+  /*  public void removeItem(int position) {
+       *//* if (position >= mItems.size()) {
+            return;
+        }*//*
+        int selectedIndex = viewModel.getSelectedIndex().getValue();
+        List<Inbox>emails=viewModel.getInboxList().getValue();
 
+    }*/
+
+    public void addItem(){
+        Inbox newEmail = DataGenerator.getRandomInboxItem(getActivity());
+        viewModel.addItem(newEmail);
     }
+    public void deleteEmail(){
+        List<Inbox> emails =viewModel.getInboxList().getValue();
+        int selection = viewModel.getSelectedIndex().getValue();
+
+        emails.remove(selection);
+        viewModel.setInboxList(emails);
+        viewModel.setSelectedIndex(-1);
+    }
+
+
+
 }
 

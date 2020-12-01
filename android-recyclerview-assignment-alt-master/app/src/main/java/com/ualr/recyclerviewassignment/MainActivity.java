@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity{
 
 
     private static final String DIALOG_FRAGMENT_TAG ="DialogFragment";
+    private static final String INBOX_LIST_FRAGMENT_TAG = "InboxListFragment";
     private static final String TAG = MainActivity.class.getSimpleName();
     private static final int DEFAULT_POS =0;
 
@@ -61,7 +62,7 @@ public class MainActivity extends AppCompatActivity{
         mFAB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                inboxListFragment = (InboxListFragment)getSupportFragmentManager().findFragmentByTag(INBOX_LIST_FRAGMENT_TAG);
                 inboxListFragment.addItem();
             }
         });
@@ -78,6 +79,7 @@ public class MainActivity extends AppCompatActivity{
     public boolean onOptionsItemSelected(@NonNull MenuItem item){
         switch (item.getItemId()){
             case R.id.delete_action:
+                //inboxListFragment.deleteEmail();
                 showSnackbar();
                 return true;
             case R.id.forward_action:
@@ -88,10 +90,9 @@ public class MainActivity extends AppCompatActivity{
         }
     }
 
-    private void initComponent() {
+   /* private void initComponent() {
 
-    ;}
-
+    ;}*/
     public void showSnackbar(){
         CoordinatorLayout parentView = findViewById(R.id.lyt_parent);
         String msg = getResources().getString(R.string.snackbar_message);
@@ -101,10 +102,4 @@ public class MainActivity extends AppCompatActivity{
     }
 
 
-    /*public class MyClickListener implements View.OnClickListener{
-        @Override
-        public void onClick (View v){
-
-        }
-    }*/
 }

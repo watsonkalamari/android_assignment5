@@ -5,6 +5,7 @@ import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.widget.EditText;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -18,6 +19,7 @@ import com.ualr.recyclerviewassignment.model.Inbox;
 
 public class ForwardDialogFragment extends DialogFragment {
     private Inbox inbox;
+    private static final String SELECT_KEY = "selectedIndex";
 
     @NonNull
     @Override
@@ -26,8 +28,7 @@ public class ForwardDialogFragment extends DialogFragment {
         LayoutInflater inflater = requireActivity().getLayoutInflater();
 
         builder.setView(inflater.inflate(R.layout.forward_dialog_fragment, null));
-
-
+        
         builder.setPositiveButton(R.string.send_btn, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
